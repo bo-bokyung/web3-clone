@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var 나이 = prompt('몇살이신가요');
+        alert(2022-parseInt(나이)+1);
+
+
+        // 쌤이 한 거
+        // 나이를 정수로 입력받기
+        var 나이 = parseInt(prompt('몇살이신가요'));
+        //오늘을 받아와서 새로운 날짜를 매번 받아냄, 2022년 지나도 사용 가능
+        // 오늘 날짜(2022-10-14 형태로 가져온다)
+        var 오늘 = new Date(); 
+        // 오늘 날짜에서 년도만 사용해 출생년도를 구한다
+        // get 블라블라 ㅁ르게떠...
+        var 출생년도 = 오늘.getfulltear - 나이 + 1;
+        // 출력
+        alert(출생년도);
+    </script>
+</body>
+</html>
