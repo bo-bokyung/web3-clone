@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        프롬프트로 숫자 하나를 입력 받은 뒤
+        그 숫자의 1단부터 9단까지의 콘솔에 출력해주는
+        구구단 출력 프로그램을 만들어주세요
+        */
+
+        // 내가 한 거
+        /*var 구구단 = parseInt(prompt('숫자를 입력해주세요.'));
+        
+        var 숫자 = 0;
+        for(var i = 1 ; i <= 9 ; i ++;) {
+            숫자 *= i;
+        }
+
+        console.log(숫자);*/
+
+        // 쌤이 한 거
+        var 몇단 = parseInt(prompt('몇 단을 출력할까요?'));
+
+        for(var i = 1 ; i <= 9 ; i ++) {
+            console.log(`${몇단} * ${i} = ${몇단*i}`);
+        }
+
+    </script>
+</body>
+</html>

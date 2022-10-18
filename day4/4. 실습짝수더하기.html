@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1부터 100까지 짝수만 더하기
+
+        /* 내가 한 거
+        var 짝수 = parseInt(prompt('숫자를 입력해주세요.'));
+
+
+        var 숫자 = 0;
+        if ((i % 2) == 0) {
+            짝수
+        }
+
+        for (var i = 1; i <= 100; i++) {
+            console.log(`${짝수} + ${i} = ${짝수+i}`);
+        } */
+
+        // 쌤이 한 거
+
+        var 합계 = 0;
+
+        for(var i = 1; i <= 100 ; i++) {
+            // 홀수만 더하려면 ===를 !==로 변경
+            if(i%2===0){
+                합계 += i;
+            }
+        }
+
+        console.log(합계);
+    </script>
+</body>
+</html>
