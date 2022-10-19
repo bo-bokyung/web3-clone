@@ -10,15 +10,17 @@
             margin: 0;
             padding: 0;
         }
-
         h1 {
             color: blue;
         }
         .container {
-            border: 1px solid black;
             margin: 10px;
-            
         }
+        div {
+            border: 1px solid black;
+            float: left;
+        }
+
         
     </style>
 </head>
@@ -27,10 +29,12 @@
 
     <script>
         var body = document.querySelector('body');
+        // '' 뜻은 문자, 0은 숫자
         var 구구단 = '';
 
         for(var i = 1 ; i <= 9 ; i ++) {
             구구단 += `<div>`;
+            구구단 += `<h2>${i}단</h2>`
             for(var j = 1 ; j <= 9 ; j ++) {
                 구구단 += `<p class="container">${i}*${j}=${i*j}</p>`
             }
