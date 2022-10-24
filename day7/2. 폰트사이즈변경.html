@@ -31,9 +31,15 @@
 
 
     <script>
-        function changeFontSize(글씨크기){
+        const fontSizeButtons = document.getElementsByClassName('font-size-button');
+
+        for(let i = 0 ; i < fontSizeButtons.length ; i ++){
+            fontSizeButtons[i].onclick = changeFontSize;
+        }
+
+        function changeFontSize(){
             const textPlace = document.querySelector('.text-place');
-            textPlace.style.fontSize = `${글씨크기}px`;
+            textPlace.style.fontSize = this.innerText;
         }
     </script>
 </body>

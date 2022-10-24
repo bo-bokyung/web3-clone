@@ -34,7 +34,7 @@
         const fontSizeButtons = document.getElementsByClassName('font-size-button');
 
         for(let i = 0 ; i < fontSizeButtons.length ; i ++){
-            // 여기 수정해야됨
+            fontSizeButtons[i].addEventListener('click', changeFontSize);
         }
 
         function changeFontSize(){
