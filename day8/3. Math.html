@@ -38,18 +38,23 @@
         마지막 else에는 괄호가 들어가지 않음.
         */
 
-        const number = document.getElementById('game-start');
-        alert(Math.floor(Math.random()*100+1));
-        
-        const 숫자 = parseInt(prompt('숫자를 입력해주세요.'));
+        const gameStart = document.getElementById('game-start');
+        gameStart.addEventListener('click',()=>{
+            const 랜덤 = alert(Math.floor(Math.random()*100+1)); 
+            const 숫자 = parseInt(prompt('숫자를 입력해주세요.'));
+        });
 
-        if(숫자>number){
+        if(숫자>랜덤){
             alert('Down')
-        }else if(숫자<number){
+        }else if(숫자<랜덤){
             alert('Up')
         }else{
             alert('correct')
         }
+        
+      
+
+        
 
 
     </script>
