@@ -12,7 +12,8 @@
 
         //const now = new Date(); 
        
-        // Math
+        // Math는 수학과 관련된 상수나 기능들이 들어있는 객체
+        // 다른 객체처럼 생성을 따로 하지 않는다. 그냥 사용 가능
         // floor() 소수점 없애고 정수만들기
         // alert(Math.floor(Math.random()*45+1));
     
@@ -25,20 +26,32 @@
         입력받은 값과 정답을 비교해서 큰지 작은지 알려줘야 합니다.
         숫자를 입력받는 과정은 총 5번 반복되어야 합니다.
         승리 시에는 게임이 종료되어야 하지만 배우지 않았으니 구현하지 않습니다.
+        
+        if (조건 1) {
+            
+        }else if(조건 2){
+
+        }else {
+
+        }
+
+        마지막 else에는 괄호가 들어가지 않음.
         */
 
-        
         const number = document.getElementById('game-start');
         alert(Math.floor(Math.random()*100+1));
         
         const 숫자 = parseInt(prompt('숫자를 입력해주세요.'));
 
-        if((숫자>=number)===){
-            alert
+        if(숫자>number){
+            alert('Down')
+        }else if(숫자<number){
+            alert('Up')
         }else{
-
+            alert('correct')
         }
-        
+
+
     </script>
 </body>
 </html>
