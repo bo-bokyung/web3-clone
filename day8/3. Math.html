@@ -57,15 +57,18 @@
         // 쌤이 한 거
 
         const upDownGameButton = document.getElementById('up-down-game-button');
+        // 클릭을 하면 upDownGameStart
         upDownGameButton.addEventListener('click',upDownGameStart);
 
+        // 클릭하면 upDownGameStart에 대한 함수
         function upDownGameStart(){
+            // answer은 100 랜덤 수
             const answer = Math.floor(Math.random()*100+1);
             alert(answer);
 
 
             for(let i = 0 ; i < 5 ; i ++) {
-                const input = Number(prompt('1부터 100까지 숫자 중 하나를 입력해주세요.'));
+                const input= Number(prompt(`1부터 100까지 숫자 중 하나를 입력해주세요.\n남은 기회는 ${5-i}번입니다.`));
 
 
                 if(answer > input) {
@@ -74,10 +77,6 @@
                     alert(`정답은 ${input}보다 작습니다.`)
                 }else{
                     alert('정답입니다!')
-                }
-
-                if(i===4) {
-                    alert(`정답은 ${answer}입니다.`)
                 }
             }
         }
