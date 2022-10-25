@@ -30,10 +30,18 @@
 
         while(true) {
             // 1부터 100까지 랜덤 숫자 생성
+            const answer = Math.floor(Math.random()*100+1);
             // 콘솔창에 생성한 랜덤 숫자 출력
+            console.log(i);
             // 횟수 1 증가
-
+            1++;
             // if문으로 정답과 같은지 비교
+            if(i === '숫자') {
+                console.log('정답입니다.');
+                break;
+            }else{
+                console.log('정답이 아닙니다.')
+            }
                 // 정답이면 콘솔에 정답입니다 출력
                 // 반복문 종료
             // 정답이 아닐 경우
