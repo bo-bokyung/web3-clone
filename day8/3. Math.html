@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="game-start">게임시작</button>
+    <!-- <button id="game-start">게임시작</button> -->
+    <button id="up-down-game-button">업다운 게임시작</button>
     <script>
 
         //const now = new Date(); 
@@ -38,10 +39,10 @@
         마지막 else에는 괄호가 들어가지 않음.
         */
 
-        const gameStart = document.getElementById('game-start');
+        // 내가 한 거
+        /*const gameStart = document.getElementById('game-start');
         gameStart.addEventListener('click',()=>{
             const 랜덤 = alert(Math.floor(Math.random()*100+1)); 
-            const 숫자 = parseInt(prompt('숫자를 입력해주세요.'));
         });
 
         if(숫자>랜덤){
@@ -50,9 +51,37 @@
             alert('Up')
         }else{
             alert('correct!')
+        }*/
+        
+
+        // 쌤이 한 거
+
+        const upDownGameButton = document.getElementById('up-down-game-button');
+        upDownGameButton.addEventListener('click',upDownGameStart);
+
+        function upDownGameStart(){
+            const answer = Math.floor(Math.random()*100+1);
+            alert(answer);
+
+
+            for(let i = 0 ; i < 5 ; i ++) {
+                const input = Number(prompt('1부터 100까지 숫자 중 하나를 입력해주세요.'));
+
+
+                if(answer > input) {
+                    alert(`정답은 ${input}보다 큽니다.`)
+                }else if(answer < input) {
+                    alert(`정답은 ${input}보다 작습니다.`)
+                }else{
+                    alert('정답입니다!')
+                }
+
+                if(i===4) {
+                    alert(`정답은 ${answer}입니다.`)
+                }
+            }
         }
         
-      
 
         
 
