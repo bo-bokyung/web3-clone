@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        * {
+         * {
             margin: 0;
             padding: 0;
         }
@@ -14,13 +14,11 @@
         li {
             list-style: none;
         }
-
         .slider-container {
             width: 300px;
             height: 200px;
             overflow: hidden;
         }
-
 
         .slide-wrapper {
             display: flex;
@@ -49,19 +47,19 @@
             <li class="slide">5</li>
         </ul>
     </div>
-
     <div class="button-wrapper">
         <button>이전</button><button>다음</button>
     </div>
 
     <script>
-        // 슬라이드 이동이 첫 번째나 마지막 슬라이드에서도 자연스럽게 이어지게
-        // 무한히 한 방향으로 회전할 수 있는 캐러셀 제작방법
-        // html요소를 복사하고 붙여넣고 transition값 조절이 필요하다.
+        //슬라이드 이동이 첫번째나 마지막 슬라이드에서도 자연스럽게 이어지게
+        // 무한히 한방향으로 회전할수있는 캐러셀 제작방법
+        // html요소를 복사하고 붙여넣고, transition값 조절이 필요하다.
+
 
         // 상수선언
         const slideWrapper = document.querySelector('.slide-wrapper');
-        // 버튼 가져오기
+        // 버튼가져오기
         const buttonWrapper = document.querySelector('.button-wrapper');
         // slider-container width가 300임
         const slideWidth = 300;
@@ -69,38 +67,63 @@
         const copyFirst = slideWrapper.firstElementChild.cloneNode(true);
         const copyLast = slideWrapper.lastElementChild.cloneNode(true);
 
-        // appendChild -> slideWrpper 뒤에 추가하겠다. 마지막에 추가하는 거라서 copyFirst만 입력함
+        // appendChild - > sliderWrapper 뒤에 추가하겠다.
+        // 마지막에 추가하는 거라서 copyFirst만 입력
         slideWrapper.appendChild(copyFirst);
-        // insertBefore slideWrapper 앞에 추가하겠다. (무엇을,어디 앞에) 추가하겠다
+        // insertBefore slideWrapper 앞에 추가하겠다. (무엇을, 어디앞에)
         slideWrapper.insertBefore(copyLast,slideWrapper.firstElementChild);
 
+        let moveCheck = true;
         let index = 0;
 
         // 이전버튼
-        buttonWrapper.children[0].addEventListener('click', ()=>{
-            index--;
-            if(index < 0){
-                // -2를 빼줘야 복사본 5번에서 진짜 5번으로 감
-                index = slideWrapper.childElementCount -2;
-            }
-            slideWrapper.style.transform = `translateX(-${slideWidth * index}px`
-        });
-
+        buttonWrapper.children[0].addEventListener('click', slideToLeft)
         // 다음버튼
-        buttonWrapper.children[1].addEventListener('click', ()=>{
-            index++;
-            // 복사본 1번에서 진짜 1번으로 감
-            if(index > slideWrapper.childElementCount -1) {
-                index = 1;
+        buttonWrapper.children[1].addEventListener('click', sliderToRight)
+
+        function moveSlide(time){
+            slideWrapper.style.transform = `translateX(-${slideWidth * index}px)`;
+            slideWrapper.style.transition = `${time}s`;
+        }
+
+        function slideToLeft() {
+            if(moveCheck){
+                moveCheck = false;
+
+                index--;
+                if(index < 0){
+                    // 5번슬라이드로 이동
+                    // -2를 해줘야 복사본 5번에서 진짜 5번으로 이동함
+                    index = slideWrapper.childElementCount - 2;
+                    moveSlide(0);
+                }else{
+                    moveSlide(1);
+                }
+                setTimeout(() => {
+                    moveCheck = true;
+                }, 1000);
             }
-            slideWrapper.style.transform = `translateX(-${slideWidth * index}px` 
-        });
-         /*$부분 -인 이유는 슬라이드가 움직일 때 왼쪽으로 움직이는 걸 생각하면
-        양수가 아니라 음수방향임*/
+            
+        }
 
+        function sliderToRight() {
+            if(moveCheck){
+                moveCheck = false;
 
+                index++
+                moveSlide(1);
 
-
+                setTimeout(() => {
+                    // 복사본 1번에서 진짜 1번으로 이동함
+                    if(index === slideWrapper.childElementCount - 1){
+                        index = 1;
+                        moveSlide(0)
+                    }
+                    moveCheck = true;
+                }, 1000);
+            }
+        }
+            
 
     </script>
 </body>
