@@ -73,20 +73,36 @@
         // insertBefore slideWrapper 앞에 추가하겠다. (무엇을, 어디앞에)
         slideWrapper.insertBefore(copyLast,slideWrapper.firstElementChild);
 
+        // true 선언을 함
         let moveCheck = true;
         let index = 1;
+        // 인터벌 넣어줄 변수 선언
+        let nextInterval;
+        moveSlide(0);
 
         // 이전버튼
-        buttonWrapper.children[0].addEventListener('click', slideToLeft)
+        buttonWrapper.children[0].addEventListener('click', slideToLeft);
         // 다음버튼
-        buttonWrapper.children[1].addEventListener('click', sliderToRight)
+        buttonWrapper.children[1].addEventListener('click', sliderToRight);
+
+
+
 
         function moveSlide(time){
             slideWrapper.style.transform = `translateX(-${slideWidth * index}px)`;
             slideWrapper.style.transition = `${time}s`;
+            // 인터벌 삭제. (타이머 초기화)
+            // 이거 안 하면 4초까지 보고 다음으로 넘겼을 때 다음 거는 1초밖에 못 봄
+            clearInterval(nextInterval);
+            // 5초마다 반복하는 인터벌 재설정
+            nextInterval = setInterval(()=> {
+                sliderToRight();
+            }, 5000);
         }
 
         function slideToLeft() {
+            // moveCheck는 애니메이션이 실행되는 동안 버튼을 누른다고해서 막 움직이지 못하게 선언하면서 시작함
+            // false인 이유는 버튼을 눌렀을 때 실행이 되면 안 되니까
             if(moveCheck){
                 moveCheck = false;
 
@@ -94,12 +110,14 @@
                 // moveSlide때문에 버튼을 클릭하면 다음으로 이동함
                 moveSlide(1);
 
-                // settimeout 일정시간 뒤에 실행하세요
+                // settimeout 일정시간 뒤에 실행하세요 (1초)
                 setTimeout(() => {
                     if(index === 0){
+                // -2인 이유는 슬라이드가 마지막에 도달했을 때 돌아가야하는 순서문제
                     index = slideWrapper.childElementCount - 2
                         moveSlide(0);
                     }
+                    // 다시 true로 바꿔줌
                     moveCheck = true;
                 }, 1000);
             }
@@ -114,6 +132,7 @@
 
                 setTimeout(() => {
                     // 복사본 1번에서 진짜 1번으로 이동함
+                    // -1인 이유는 슬라이드가 마지막에 도달했을 때 돌아가야하는 순서문제
                     if(index === slideWrapper.childElementCount - 1){
                         index = 1;
                         moveSlide(0)
